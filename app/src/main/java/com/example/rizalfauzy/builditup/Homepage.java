@@ -30,13 +30,12 @@ public class Homepage extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private AndroidImageAdapter mAdapterView;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-//    private ViewPager mPictureViewPager;
+    //private ViewPager mPictureViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,6 @@ public class Homepage extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-//        mAdapterView = new AndroidImageAdapter(this);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -56,9 +54,6 @@ public class Homepage extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-//        mPictureViewPager = (ViewPager) findViewById(R.id.viewPageAndroid);
-//        mPictureViewPager.setAdapter(mAdapterView);
     }
 
 
