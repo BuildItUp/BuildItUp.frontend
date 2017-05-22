@@ -1,5 +1,7 @@
 package com.example.rizalfauzy.builditup;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 
@@ -13,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class Homepage extends AppCompatActivity {
 
@@ -34,6 +37,8 @@ public class Homepage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TextView userTextView = (TextView)findViewById(R.id.textView);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage2);
 

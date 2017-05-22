@@ -1,7 +1,9 @@
 package com.example.rizalfauzy.builditup;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,6 +55,14 @@ public class LoginPage extends Activity  {
                     public void onResponse(Call<UserUpdate> call, Response<UserUpdate> response) {
                         if(response.body().getStatus().equals("success")) {
                             Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
+
+                            SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putInt("id", response.body().getUser().getId());
+                            editor.putString("username", response.body().getUser().getUsername());
+                            editor.putString("access_token", response.body().getUser().getAccess_token());
+                            editor.putString("login_as", response.body().getUser().getLogin_as());
+                            editor.commit();
 
                             tx1.setText(Integer.toString(counter));
                             Intent i = new Intent(LoginPage.this, Homepage.class);
