@@ -26,6 +26,7 @@ import retrofit2.Response;
 public class LoginPage extends Activity  {
     Button b1,b2,b3;
     EditText ed1,ed2;
+    UserAPIInterface mUserAPIInterface;
 
 
     int counter = 3;
@@ -45,6 +46,8 @@ public class LoginPage extends Activity  {
 
         mUserAPIInterface = APIClient.getClient().create(UserAPIInterface.class);
 
+        mUserAPIInterface = APIClient.getClient().create(UserAPIInterface.class);
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +55,7 @@ public class LoginPage extends Activity  {
                 result.enqueue(new Callback<UserUpdate>() {
                     @Override
                     public void onResponse(Call<UserUpdate> call, Response<UserUpdate> response) {
+<<<<<<< HEAD
                         if(response.body().getStatus().equals("success")) {
                             Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
 
@@ -74,6 +78,30 @@ public class LoginPage extends Activity  {
                     public void onFailure(Call<UserUpdate> call, Throwable t) {
 
                     }
+=======
+                        if (response.body().getStatus().equals("success")) {
+                            Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(LoginPage.this, Homepage.class);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            counter--;
+
+                            if (counter == 0) {
+                                b1.setEnabled(false);
+                                if (counter == 0) {
+                                    b1.setEnabled(false);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserUpdate> call, Throwable t) {
+                        Log.e("Retrofit Get", t.toString());
+                    }
+
+>>>>>>> f9a33e3f02d112b665b29a99ecb1cf85a76fa060
                 });
             }
         });
