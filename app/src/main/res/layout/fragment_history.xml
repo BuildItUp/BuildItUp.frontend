@@ -9,9 +9,12 @@
     tools:context="layout.History">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="History fragment" />
+        app:tabIndicatorColor="#fcec00"
+        app:tabSelectedTextColor="#f9ee00"
+        app:tabTextColor="#2d2d2d"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

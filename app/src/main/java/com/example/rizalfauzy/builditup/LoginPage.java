@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 
 public class LoginPage extends Activity  {
-    Button b1,b2;
+    Button b1,b2,b3;
     EditText ed1,ed2;
 
-    TextView tx1;
+
     int counter = 3;
 
     @Override
@@ -24,13 +24,14 @@ public class LoginPage extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        b1 = (Button)findViewById(R.id.button);
-        ed1 = (EditText)findViewById(R.id.editText);
-        ed2 = (EditText)findViewById(R.id.editText2);
 
+        ed1 = (EditText)findViewById(R.id.username);
+        ed2 = (EditText)findViewById(R.id.pass);
+
+        b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.button2);
-        tx1 = (TextView)findViewById(R.id.textView3);
-        tx1.setVisibility(View.GONE);
+        b3 = (Button) findViewById(R.id.signup);
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,17 +41,15 @@ public class LoginPage extends Activity  {
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
 
-                    tx1.setText(Integer.toString(counter));
                     Intent i = new Intent(LoginPage.this, Homepage.class);
                     startActivity(i);
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
 
-                    tx1.setVisibility(View.VISIBLE);
-                    tx1.setBackgroundColor(Color.RED);
-                    counter--;
 
+
+                    counter--;
                     if (counter == 0) {
                         b1.setEnabled(false);
                     }
@@ -62,6 +61,14 @@ public class LoginPage extends Activity  {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginPage.this, RegisterPage.class);
+                startActivity(i);
             }
         });
     }
