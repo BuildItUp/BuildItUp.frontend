@@ -24,25 +24,24 @@ import retrofit2.Response;
 
 
 public class LoginPage extends Activity  {
-    Button b1,b2;
+    Button b1,b2,b3;
     EditText ed1,ed2;
-    UserAPIInterface mUserAPIInterface;
 
-    TextView tx1;
+
     int counter = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+        final UserAPIInterface mUserAPIInterface;
+
+        ed1 = (EditText)findViewById(R.id.username);
+        ed2 = (EditText)findViewById(R.id.pass);
 
         b1 = (Button)findViewById(R.id.button);
-        ed1 = (EditText)findViewById(R.id.editText);
-        ed2 = (EditText)findViewById(R.id.editText2);
-
         b2 = (Button)findViewById(R.id.button2);
-        tx1 = (TextView)findViewById(R.id.textView3);
-        tx1.setVisibility(View.GONE);
+        b3 = (Button) findViewById(R.id.signup);
 
         mUserAPIInterface = APIClient.getClient().create(UserAPIInterface.class);
 
@@ -64,25 +63,16 @@ public class LoginPage extends Activity  {
                             editor.putString("login_as", response.body().getUser().getLogin_as());
                             editor.commit();
 
-                            tx1.setText(Integer.toString(counter));
                             Intent i = new Intent(LoginPage.this, Homepage.class);
                             startActivity(i);
                         }else{
                             Toast.makeText(getApplicationContext(), response.body().getMessage(),Toast.LENGTH_SHORT).show();
-
-                            tx1.setVisibility(View.VISIBLE);
-                            tx1.setBackgroundColor(Color.RED);
-                            counter--;
-
-                            if (counter == 0) {
-                                b1.setEnabled(false);
-                            }
                         }
                     }
 
                     @Override
                     public void onFailure(Call<UserUpdate> call, Throwable t) {
-                        Log.e("Retrofit Get", t.toString());
+
                     }
                 });
             }
@@ -92,6 +82,14 @@ public class LoginPage extends Activity  {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginPage.this, RegisterPage.class);
+                startActivity(i);
             }
         });
     }
