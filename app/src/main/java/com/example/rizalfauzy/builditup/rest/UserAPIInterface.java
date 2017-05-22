@@ -18,4 +18,12 @@ public interface UserAPIInterface {
             @Field("username") String username,
             @Field("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("user/register")
+    Call<UserUpdate> userRegister(
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("email") String email
+    );
 }

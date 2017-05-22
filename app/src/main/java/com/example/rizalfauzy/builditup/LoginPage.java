@@ -35,7 +35,6 @@ public class LoginPage extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-        final UserAPIInterface mUserAPIInterface;
 
         ed1 = (EditText)findViewById(R.id.username);
         ed2 = (EditText)findViewById(R.id.pass);
@@ -45,9 +44,6 @@ public class LoginPage extends Activity  {
         b3 = (Button) findViewById(R.id.signup);
 
         mUserAPIInterface = APIClient.getClient().create(UserAPIInterface.class);
-
-        mUserAPIInterface = APIClient.getClient().create(UserAPIInterface.class);
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +51,6 @@ public class LoginPage extends Activity  {
                 result.enqueue(new Callback<UserUpdate>() {
                     @Override
                     public void onResponse(Call<UserUpdate> call, Response<UserUpdate> response) {
-<<<<<<< HEAD
                         if(response.body().getStatus().equals("success")) {
                             Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
 
@@ -71,20 +66,6 @@ public class LoginPage extends Activity  {
                             startActivity(i);
                         }else{
                             Toast.makeText(getApplicationContext(), response.body().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<UserUpdate> call, Throwable t) {
-
-                    }
-=======
-                        if (response.body().getStatus().equals("success")) {
-                            Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(LoginPage.this, Homepage.class);
-                            startActivity(i);
-                        } else {
-                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             counter--;
 
                             if (counter == 0) {
@@ -94,14 +75,13 @@ public class LoginPage extends Activity  {
                                 }
                             }
                         }
-                    }
+                        }
+
 
                     @Override
                     public void onFailure(Call<UserUpdate> call, Throwable t) {
                         Log.e("Retrofit Get", t.toString());
                     }
-
->>>>>>> f9a33e3f02d112b665b29a99ecb1cf85a76fa060
                 });
             }
         });
