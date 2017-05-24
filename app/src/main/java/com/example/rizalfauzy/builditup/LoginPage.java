@@ -62,6 +62,8 @@ public class LoginPage extends Activity  {
                             editor.putString("login_as", response.body().getUser().getLogin_as());
                             editor.commit();
 
+                            //Toast.makeText(getApplicationContext(), sharedPref.getInt("id", 0) + " = ID ANDA",Toast.LENGTH_LONG).show();
+
                             Intent i = new Intent(LoginPage.this, Homepage.class);
                             startActivity(i);
                         }else{
