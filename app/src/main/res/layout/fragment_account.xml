@@ -9,9 +9,42 @@
     tools:context="layout.Homepage">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Account fragment" />
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.CircleImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/img1"
+            android:layout_alignParentTop = "true"
+            android:layout_centerHorizontal = "true" >
+        </android.support.v4.widget.CircleImageView>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/img1">
+
+            <android.support.v7.widget.ActionBarContextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+
+            <android.support.v7.widget.ActionBarContextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
 
 </FrameLayout>

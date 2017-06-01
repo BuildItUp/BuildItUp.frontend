@@ -1,10 +1,28 @@
 package com.example.rizalfauzy.builditup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.text.TextUtils;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -18,6 +36,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class Homepage extends AppCompatActivity {
+
+    private static int RESULT_LOAD_IMG = 1;
+    String imgDecodableString;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -115,6 +136,50 @@ public class Homepage extends AppCompatActivity {
                 View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
                 return rootView;
             }
+        }
+    }
+
+    public void ImageProcess(View view){
+        // Create intent to Open Image applications like Gallery, Google Photos
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        //Start the Intent
+        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try{
+            //When image is picked
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK && null != data){
+                //Get image from data
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                //Get the cursor
+                Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+
+                //Move to first row
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                ImageButton imgButton = (ImageButton) findViewById(R.id.imgProfile);
+                //Set the Image in ImageView after decoding the String
+                RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), imgDecodableString);
+                roundedBitmapDrawable.setCircular(true);
+                imgButton.setImageDrawable(roundedBitmapDrawable);
+
+
+            }
+            else{
+                Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch(Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+                    .show();
         }
     }
 

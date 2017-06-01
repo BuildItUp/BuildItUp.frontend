@@ -21,7 +21,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#fff">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,34 +30,43 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp">
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="129dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Build"
-                        android:layout_centerInParent="true"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@mipmap/ic_launcher"
+                        android:text="\nBuild"
+                        android:layout_centerInParent="true" />
+
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Renovation"
-                        android:layout_centerInParent="true"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="129dp">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@mipmap/ic_launcher"
+                        android:text="\nRenovation"
+                        android:layout_centerInParent="true" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Maintenance"
-                        android:layout_centerInParent="true"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="129dp">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@mipmap/ic_launcher"
+                        android:text="\nMaintenance"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -67,33 +77,39 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Worker Rating"
-                        android:layout_centerInParent="true"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="129dp">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@mipmap/ic_launcher"
+                        android:text="\nRating"
+                        android:layout_centerInParent="true" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Top Up"
-                        android:layout_centerInParent="true"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="129dp">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@mipmap/ic_launcher"
+                        android:text="\nTop Up"
+                        android:layout_centerInParent="true" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="130dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Notifications"
-                        android:layout_centerInParent="true"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="129dp">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@mipmap/ic_launcher"
+                        android:text="\nNotivication"
+                        android:layout_centerInParent="true" />
                 </RelativeLayout>
 
             </LinearLayout>

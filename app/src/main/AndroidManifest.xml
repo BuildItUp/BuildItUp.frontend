@@ -36,7 +36,8 @@
         </activity>
         <activity android:name=".LoginPage" />
         <activity android:name=".RegisterPage" />
-        <activity android:name=".Biodata1Page"></activity>
+        <activity android:name=".Biodata1Page" />
+        <activity android:name=".BuildPage"></activity>
     </application>
 
 </manifest>
