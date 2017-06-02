@@ -1,5 +1,6 @@
 package com.example.rizalfauzy.builditup.model.user;
 
+import com.example.rizalfauzy.builditup.model.customer.Customer;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -151,4 +152,6 @@ public class User {
     public void setUpdated_at(int updated_at) {
         this.updated_at = updated_at;
     }
+
+    //For relations
 }
